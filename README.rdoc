@@ -1,28 +1,13 @@
-== README
+== MOOCS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Proyecto escolar donde se implementan conceptos de Red Social. Un Muro, amistades y estados en grupos.
 
-Things you may want to cover:
+Características técnicas
 
-* Ruby version
+* Ruby 2.00
 
-* System dependencies
+* Rails 4.00
 
-* Configuration
+* Bootstrap a través de Flat UI.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Por si esstán pensando desarrollar una red social, quizás les sirva.
