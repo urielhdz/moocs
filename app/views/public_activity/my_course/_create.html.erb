@@ -1,0 +1,4 @@
+<small> <strong><%= link_to activity.owner.nombre, "profile/#{activity.owner.id}" if activity.owner %></strong> <% if activity.trackable and not activity.trackable.course.nil?%>
+	se ha suscrito al curso  
+	<%= link_to "\"#{activity.trackable.course.titulo}\"" , activity.trackable.course
+ %> <%end%></small>

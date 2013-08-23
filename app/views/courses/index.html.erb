@@ -1,0 +1,20 @@
+<h1>Cursos Disponibles</h1>
+  <% @courses.each do |course| %>
+  <div class='hero-unit curso'>
+    <div class="row-fluid">
+      <div class="span7">
+        <h2><%= course.titulo %> </h2>
+        <p>
+          <%= truncate(course.descripcion.gsub(%r{</?[^>]+?>}, ''), length: 300) %>
+        </p>
+      </div>
+      <div class="span5"></div>
+      
+    </div>
+    
+    <%= link_to 'Ir al curso', course, class: "btn btn-info" %>
+  </div>
+  <%end%>
+<br>
+
+<%= link_to 'New Course', new_course_path %>

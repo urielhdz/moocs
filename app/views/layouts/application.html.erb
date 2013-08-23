@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moocs</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="left">
+	<h2>Massive Classroom Courses</h2>
+	<div>
+		<small>
+			Bienvenido <br>
+			<%= link_to(edit_student_registration_path) do %>
+				<%= current_student.nombre %> <%= current_student.apellido %>
+			<%end%>
+		</small>
+	</div>
+	<ul class='left_navigation'>
+		<li>
+			Mis Cursos
+			<ul>
+				<%current_student.my_courses.each do |my_course| %>
+					<%= link_to(my_course.course) do %>
+						<li><%=my_course.course.titulo%></li>
+					<%end%>
+				<%end%>
+			</ul>
+		</li>
+	</ul>
+</div>
+	
+<div class="right">
+	
+	<header>
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<nav class='nav-collapse collapse'>
+					<ul class='nav'>
+						<% if student_signed_in? %>
+						<li><%= link_to "Inicio", "/" %> </li>
+						<li><%= link_to "Cursos", courses_path %> </li>
+						<li><%= link_to 'Crear curso', new_course_path %></li>
+					    <li>
+					    	<a href="#">Mi cuenta.</a>
+					    	<ul>
+					    		<li><%= link_to 'Mi perfil', "/profile/#{current_student.id}" %></li>
+					    		<li><a href="#">Mis cursos</a></li>
+					    		<li><%=link_to "Editar cuenta",edit_student_registration_path%></a></li>
+					    		<li><%= link_to "Cerrar sesión", destroy_student_session_path, :method => :delete %></li>
+					    	</ul>
+					    </li>
+					  <%end%>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<p class="notice alert alert-info fade in" <% if not notice%> style='display:none;'<%end%>><%= notice %> <button type='button' class='close' data-dismiss='alert'>x</button></p>
+	<p class="alert fade in" <% if not alert%> style='display:none;'<%end%>><%= alert %> <button type='button' class='close' data-dismiss='alert'>x</button></p>
+	<div id="content">
+		<%= yield.force_encoding("UTF-8") %>
+	</div>
+	
+</div>
+</body>
+</html>

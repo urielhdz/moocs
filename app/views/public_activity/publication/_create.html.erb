@@ -1,0 +1,11 @@
+<div class="span2">
+	<%= image_tag(activity.owner.gravatar_url) %>
+</div>
+<div class="span9">
+	<h4><%= link_to activity.owner.nombre, "profile/#{activity.owner.id}" if activity.owner %> 
+	<% unless activity.trackable.course.nil? %>
+	<small>publicó en <%= link_to activity.trackable.course.titulo, activity.trackable.course%></small>
+	<% end %>
+	</h4>
+	<%=activity.trackable.body.force_encoding("UTF-8")%>						
+</div>

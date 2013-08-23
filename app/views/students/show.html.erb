@@ -1,0 +1,25 @@
+<input type='hidden' id='friend_id' value='<%=@student.id%>'>
+<div class="row-fluid">
+	<div class="span4">
+		<%= image_tag(@student.gravatar_url) %>
+		<h3>Amigos</h3>
+		<%@student.friendships.each do |friendship| %>
+			<div class='row-fluid'>
+				<div class="span2">
+					<%= image_tag(friendship.friend.gravatar_url) %>
+				</div>
+				<div class="span6">
+					<p><%= link_to "#{friendship.friend.nombre} #{friendship.friend.apellido}", "/profile/#{friendship.friend.id}" %></p>
+				</div>
+			</div>
+		<%end%>
+	</div>	
+	<div class="span6">
+		<h1><%=@student.nombre%> <%=@student.apellido%></h1>
+		<p><%= @student.biografia %></p>
+		<% if not isMyFriend?(@student) and current_student != @student%>
+
+			<button type='button' class='btn btn-info' id='agregar_amigo'>Agregarlo a mis amigos</button>
+		<%end%>
+	</div>
+</div>

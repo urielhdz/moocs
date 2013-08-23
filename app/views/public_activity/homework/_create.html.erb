@@ -1,0 +1,4 @@
+<small> <strong><%= link_to activity.owner.nombre, "profile/#{activity.owner.id}" if activity.owner %></strong>
+	ha subido una tarea a 
+	<%= link_to "\"#{activity.trackable.course.titulo}\"" , activity.trackable.course%>
+	</small>

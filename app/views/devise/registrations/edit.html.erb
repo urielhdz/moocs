@@ -1,0 +1,52 @@
+<h2>Edita tu cuenta </h2>
+<small>
+  <%= link_to "Regresar a la página anterior", :back%>
+</small><br><br>
+
+<div class="row-fluid editar_usuario">
+  <div class="span5">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <div><%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true %></div>
+
+      <div><%= f.label :nombre %>
+      <%= f.text_field :nombre %></div>
+
+      <div><%= f.label :apellido %>
+      <%= f.text_field :apellido %></div>
+
+      <div><%= f.label :biografia %>
+      <%= f.text_area :biografia %></div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div><%= f.label :password, "Nuevo password" %> <i>(Dejar en blanco en caso de no querer cambiarlo)</i><br />
+      <%= f.password_field :password, :autocomplete => "off" %></div>
+
+      <div><%= f.label :password_confirmation, "Confirmar nuevo password" %>
+      <%= f.password_field :password_confirmation %></div>
+
+      <div><%= f.label :current_password, "Password actual" %> <i>(Necesaria para registrar tus cambios)</i><br />
+      <%= f.password_field :current_password %></div>
+
+      <div><%= f.submit "Actualizar mi cuenta",class:'btn btn-primary' %></div>
+    <% end %>
+  </div>
+  <div class="span1"></div>
+  <div class="span4">
+    <h3>Cancelar mi cuenta</h3>
+
+    <p>¿Quieres cancelar tu cuenta? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete,class:'btn btn-danger' %></p>
+  </div>
+</div>
+
+
+  
+
+
+
+
+

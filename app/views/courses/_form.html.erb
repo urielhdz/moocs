@@ -1,0 +1,37 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="field">
+        <%= f.text_field :titulo, placeholder: "Escribe el título aquí" %>
+      </div>
+      <div class="field">
+        <%= f.label :descripcion %><br>
+        <%= render 'welcome/toolbar'%>
+        <%= f.text_area :descripcion, id:"wy_editor", placeholder: "Coloca la descripción del curso aquí, utiliza los controles de arriba para mejorar la forma en cómo se mostrará el curso" %>
+      </div>    
+    </div>
+    <div class="span3 offset1">
+      <div class="field">
+        <%= f.label :dificultad, "Nivel de dificultad del curso: " %><br>
+        <%= select_tag(:city_id, options_for_select([['Fácil', 1], ['Intermedio', 2], ['Difícil', 3],['Muy difícil', 4]], 1)) %>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

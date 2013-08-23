@@ -1,0 +1,26 @@
+<div class="row-fluid">
+	<div class="span7">
+		<%= render partial:'publications/form' , locals: {publication: new_publication} %>
+		<% @activities.each do |activity| %>
+			<div class="publication row-fluid">
+			<%= render_activity activity %>
+			</div>
+		<%end%>
+	</div>
+	<div class="span3 offset1">
+		<h2>Cursos más nuevos</h2>
+		<% @courses.each do |course| %>
+		  <div class=' curso'>
+		    <div class="row-fluid">
+		      <div class="span7">
+		        <h4><%= course.titulo %></h4>
+		      </div>
+		      <div class="span5"></div>
+		      
+		    </div>
+		    
+		    <%= link_to 'Ir al curso', course%>
+		  </div>
+		  <%end%>
+	</div>
+</div>

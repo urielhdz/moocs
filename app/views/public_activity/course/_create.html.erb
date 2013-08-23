@@ -1,0 +1,5 @@
+<small><strong><%= link_to activity.owner.nombre, "profile/#{activity.owner.id}" if activity.owner %> </strong>
+<% if activity.trackable %>
+	ha creado el curso
+	<%= link_to "\"#{activity.trackable.titulo}\"", activity.trackable
+ %> <%end%></small>

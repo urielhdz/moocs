@@ -1,0 +1,231 @@
+@font-face{
+	font-family: Controls;
+	src: url(<%= asset_path('controls.ttf') %>);
+}
+html,body{
+	height: 100%;
+	margin:0px;
+    padding:0px !important;
+    font-family: 'Lato';
+    overflow-x:hidden;
+}
+#background{
+	background: url(background.jpg);
+	background-size: 100%;
+	height: 120%;
+	-webkit-filter:blur(4px) contrast(130%) grayscale(0.2);
+	position: fixed;
+	z-index: -1;
+	top: -10%;
+	left: -10%;
+	width: 120%;
+}
+.display_object{
+	cursor:pointer;
+}
+#titulo{
+	color:#2ECC71;
+	font-size: 3em;
+	text-align: center;
+}
+.curso{
+	h2{
+		color:#34495e;
+	}
+	text-align: justify;
+	color: #6b6b6b;
+
+}
+#devise_forms{
+	position: absolute;
+	left: 33%;
+	top: 10%;
+	width: 30%;
+	color:#fff;
+	text-shadow:0px 0px 5px rgba(0,0,0,0.8);
+	h1{
+		text-shadow:0px 0px 10px rgba(0,0,0,0.9);
+	}
+	form{
+		*{
+			tranistion:all 1s;
+		}
+
+		label{
+			
+			margin: 0;
+			padding: 0;
+			font-size: 1.5em;
+		}
+		input[type="text"],input[type="password"],input[type="email"]{
+			background: rgba(0,0,0,0.2);
+			margin: 0;
+			width: 100%;
+			margin-top:1em;
+		}
+		input:focus{
+			background-color: #fff;
+		}
+		.checkbox_z{
+			padding: 1em;
+			label{
+				display: inline-block;
+				vertical-align: top;
+
+			}
+		}
+	}
+}
+.editar_usuario{
+	label{
+		margin: 0;
+	}
+	input{
+		padding: 0px 10px;
+	}
+	input[type="submit"]{
+		padding: 10px;
+	}
+}
+header{
+		
+}
+.navbar-inner{
+	border-radius: 0;
+}
+.navbar{
+	.nav{
+		float: right;
+		margin-right: 6em;
+	}
+}
+.navbar .nav > li{
+	float: none;
+	display: inline-block;
+
+}
+.navbar-inverse .nav > li > a{
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px 5px;
+}
+.hero-unit{
+	padding: 0.5em;
+}
+.left{
+	width: 7%;
+	h2{
+		font-size: 1em;
+		line-height: 1em;
+	}
+	transition:all 0.4s;
+	height: 100%;
+	background-color: #222;
+	color: #fff;
+	text-align: center;
+	.left_navigation{
+		padding: 0;
+		margin-left: 0;
+		margin-top: 2em;
+		li{
+			max-height: 30px;
+			padding: 10px 5px;
+			font-size: 1em;
+			border-top: solid 1px #C0392B;
+			border-bottom: solid 1px #C0392B;
+			overflow: hidden;
+			list-style-type: none;
+			transition:all 0.6s;
+			ul{
+				margin-left: 0;
+				margin-top: 10px;
+				padding: 0;
+				a{
+					font-size: 10px;
+				}
+				li{
+					border: none;
+					background-color: #333;
+					width: 100%;
+					max-height: 200px;
+					margin: 0;
+					margin-left: -4px;
+					transition:all 0.4s;
+					&:hover{
+						background-color:#555;
+					}
+				}
+			}
+			&:hover{
+				max-height: 800px;
+			}
+		}
+	}
+}
+.right{
+	width:93%;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	height: 100%;
+	#content{
+		margin-left: 1%;
+	}
+}
+.left,.right{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: -4px;
+}
+.publication{
+	padding: 1em;
+	border-top: solid 1px #eee;
+	border-bottom: solid 1px #eee;
+	margin-bottom: 10px;
+	.span2{
+		width: 80px;
+	}
+}
+a{
+	color: inherit;
+	font-weight: bold;
+	transition:all 0.4s;
+	text-decoration: none;
+	a:hover{
+		background-color:transparent;
+	}
+	&:visited{
+		color: inherit;
+	}
+}
+#wysihtml5-toolbar {
+	text-align: left;
+	width: 90%;
+	a{
+		margin-right: -5px;
+		padding: 5px;
+		border-radius: 0;
+		text-align: center;
+		font-family: Controls;
+		color: #595959;
+		background-color: #BDC3C7;
+		padding-top: 6px;
+		height: 24px;
+	}
+}
+.new_course,.edit_course{
+	#wy_editor{
+		width: 80%;
+		height: 400px;
+		
+	}
+}
+.temario{
+	margin-right: -5px;
+	h4{
+		color: #C0392B;
+	}
+	div{
+		border-right: solid 1px;
+	}
+	
+}

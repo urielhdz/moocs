@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moocs</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body style='overflow-x:hidden;'>
+	<div id="background">
+		
+	</div>
+	<div id='devise_forms'>
+		<p class="notice alert alert-info"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield.force_encoding("UTF-8")  %>
+	</div>
+</div>
+</body>
+</html>

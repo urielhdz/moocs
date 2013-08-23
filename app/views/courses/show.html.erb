@@ -1,0 +1,107 @@
+<input type='hidden' id='curso_id' value='<%=@course.id%>'>
+<input type='hidden' id='student_id' value='<%=@current_student.id%>'>
+<div class='container'>
+	
+	<div class="row-fluid">
+		<div class="span9">
+		<h1><%= @course.titulo %></h1>
+		<% if notInMyCourses?(@course)%>
+			
+			<%= link_to 'Ver todos los cursos', courses_path %>
+			<div class="curso">
+	  			<p>
+	    			<%= @course.descripcion.html_safe.force_encoding('utf-8') %>
+	  			</p>
+			</div>
+			<div>
+	  			Si estás siguiendo este curso, <button type='button' class='btn btn-info' id='agregar_curso'>agrégalo a tus cursos</button>
+			</div>
+		<%else%>
+		<div style="width:80%;">
+			<%= render partial:'publications/form' , locals: {publication: new_publication,curso:@course.id} %>
+			<% @course.publications.each do |publication| %>
+				<div class="row-fluid">
+					<div class="span1">
+						<%= image_tag(publication.student.gravatar_url) %>
+					</div>
+					<div class="span9">
+						<p><strong><%= link_to publication.student.nombre, "profile/#{publication.student.id}" %> </strong></p>
+						<%=publication.body.force_encoding("UTF-8")%>						
+					</div>
+				</div>
+			<%end%>
+		</div>
+		<h2>Tareas</h2>
+		<div>
+			<% @course.homeworks.each do |h| %>
+				<div class="publication">
+					<p><strong><%= h.titulo %></strong></p>	
+					<p><%= h.descripcion %></p>
+					<p>A entregar en <%= distance_of_time_in_words(DateTime.now.to_date,h.entrega) %></p>
+				</div>
+				
+
+			<%end%>
+		</div>
+		<small class='display_object' data-object='.homeworks_form'>Mostrar formulario para agregar tarea</small><br>
+		<div style='display:none;' class='homeworks_form'>
+			<%= render partial: 'homeworks/form',locals: {curso: @course.id} %>	
+		</div>
+		<%end%>
+		</div>	
+		<div class="span3">
+			<h3>Estudiantes</h3>
+			<%@course.students.first(10).each do |student| %>
+				<div class='row-fluid'>
+					<div class="span2">
+						<%= image_tag(student.gravatar_url) %>
+					</div>
+					<div class="span6">
+						<p><%= link_to "#{student.nombre} #{student.apellido}", "/profile/#{student.id}" %></p>
+					</div>
+				</div>
+			<%end%>
+		</div>	
+	</div>
+	
+
+	<h2>Temario</h2>
+	<div class="row-fluid temario">
+		<div class="span4">
+			<h4>Primer Corte</h4>
+			<% @course.firstTopics.each do |topic| %>
+				<ol>
+					<li><%= topic.titulo %></li>
+				</ol>
+			<%end%>
+		</div>		
+		<div class="span4">
+			<h4>Segundo Corte</h4>
+			<% @course.secondTopics.each do |topic| %>
+				<ol>
+					<li><%= topic.titulo %></li>
+				</ol>
+			<%end%>
+		</div>		
+		<div class="span4">
+			<h4>Tercer Corte</h4>
+			<% @course.thirdTopics.each do |topic| %>
+				<ol>
+					<li><%= topic.titulo %></li>
+				</ol>
+			<%end%>
+		</div>		
+	</div>
+	
+		
+	<% if @course.student_id == current_student.id %>
+		<small><%= link_to 'Eliminar curso', @course, method: :delete, data: { confirm: 'Seguro de eliminarlo?' } %></small><br>
+		<small><%= link_to "Editar curso", edit_course_path(@course) %></small><br>
+		<small><a data-object='.topic_form' class='display_object'>Mostrar formulario para agregar tema</a></small>
+		<div class='topic_form' style='display:none;'>
+			<%= render partial:'topics/form' , locals: {topic: new_topic,course: @course} %>
+		</div>
+	<%end%>
+
+	<br>
+</div>
